@@ -37,14 +37,16 @@ def num_repet(z):
 
 def num_ausente(lista):
     actual = math.nan
-    for item in lista:
-        last = actual
-        actual = item
-        if actual == (last + 1):
-            continue
-        elif actual == (last + 2):
-            return (actual - 1)
-
+    if lista[0] != 1:
+        return 1
+    else:
+        for item in lista:
+            last = actual
+            actual = item
+            if actual == (last + 1):
+                continue
+            elif actual == (last + 2):
+                return (actual - 1)
 
 Quantos_numeros = int(input("Digite N:"))
 Quantos_numeros = escopo_numero(Quantos_numeros)
