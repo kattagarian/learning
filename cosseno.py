@@ -1,44 +1,41 @@
-def fatorial(atual, anterior):
-    if atual == 0:
+def fatorial(fatorial_atual, fatorial_anterior):
+    #Funcao que calcula o fatorial n (atual) aproveitando o fatorial de (n-2) (anterior)
+    if fatorial_atual == 0:
         return 1
     else:
-        fatorial = (atual)*(atual-1)*anterior
-        return fatorial
+        return (fatorial_atual)*(fatorial_atual-1)*fatorial_anterior
 
-def expoente(x, n):
+def expoente(base, expoente):
+    #Funcao que calcula o expoente repetindo a multiplicacao da base por ela mesma (n-1) vezes.
     contador = 0
-    final = x
-    if n == 0:
+    final = base
+    if expoente == 0:
         return 1
     else:
-        while contador != n-1:
-            final = final*x
-            contador += 1
-            #print(contador, final)
+        for n in range(0, expoente-1):
+            final = final*base
         return final
 
-def divisao(x, y):
-    return x/y
+def divisao(numerador, denominador):
+    #Funcao que recebe o numerador e denominador e retorna o resultado da divisao entre eles
+    return numerador/denominador
 
+def main():
+    #Funcao principal, onde declaramos as variaveis e rodamos o laço principal que soma n vezes a funcao cosseno
+    x = float(input())
+    n = 0
+    fatorial_atual = 1
+    fatorial_anterior = 1
+    numerador = 1
+    total = 0
+    for n in range(50):
+        if n%2 == 0:
+            numerador = -1
+        else:
+            numerador = 1
+        cosseno = divisao((-1)*numerador, fatorial(2*n, fatorial_anterior))*expoente(x, 2*n)
+        fatorial_anterior = fatorial(2*n, fatorial_anterior)
+        total = total + cosseno
+    print("%.4f"%total)
 
-x = float(input())
-n = 0
-fatorial_atual = 1
-fatorial_anterior = 1
-numerador = 1
-total = 0
-while n != 50:
-    if n%2 == 0:
-        numerador = -1
-    else:
-        numerador = 1
-    cosseno = divisao((-1)*numerador, fatorial(2*n, fatorial_anterior))*expoente(x, 2*n)
-    #cosseno = (((-1)*numerador)/(fatorial(2*n, fatorial_anterior)))*(expoente(x, 2*n))
-    fatorial_anterior = fatorial(2*n, fatorial_anterior)
-    #print(n, numerador, fatorial_anterior)
-    #print(expoente(5, 0))
-    total = total + cosseno
-    #print(n)
-    n += 1
-
-print("%.4f"%total)
+main()
