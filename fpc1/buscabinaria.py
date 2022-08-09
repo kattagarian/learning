@@ -7,7 +7,7 @@ def buscabinaria(x, lista, contador):
     #print(lista, contador)
     if lista[meio] == x: return contador    #Verifica se o meio é o valor procurado
     else:
-        if n <= 2:  return contador #Se possui 2 ou menos elementos, retorna o contador. Já que ou o elemento alvo está entre os dois ou não está
+        if n <= 2:  return contador #Se possui 2 ou menos elementos, retorna o contador. Já que ou o elemento alvo está entre os dois ou não está na lista
         if lista[meio] < x:
             return buscabinaria(x, lista[meio:], contador+1)    #procura a primeira metade da lista
         else:
