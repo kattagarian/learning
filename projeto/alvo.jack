@@ -1,0 +1,43 @@
+class Alvo {
+	field int x, y, tamanho;
+	
+	/** Constructs fruit and lugars it on a random location. */
+	constructor Alvo new (int a, int b, int c) {
+		let x = a;
+		let y = b;
+		let tamanho = z;
+		do draw();
+		return this;
+	}
+
+	/** Getters. */
+	method int getX() { return x; }
+	method int getY() { return y; }
+		
+	/** lugars a fruit on a new random location. */
+	method void lugar() { 
+		let x = Random.randRange(32);
+		let y = Random.randRange(16);
+		/** while (Memory.peek((x/16)+(y*32)+16384)) {
+			let x = Random.randRange(32);
+			let y = Random.randRange(16);
+		}*/
+		do draw();
+		return;
+	}
+
+	/** Draws fruit. */
+	method void desenho() {
+		do Screen.setColor(true);
+		do Screen.drawRectangle(x, y, x + tamanho - 1, y + tamanho - 1);
+		do Screen.setColor(false);
+		do Screen.drawRectangle(x + 3, y + 3, x + tamanho - 4, y + tamanho - 4);
+		return;
+	}
+
+	/** Disposes this fruit. */
+	method void dispose() { 
+		do Memory.deAlloc(this);
+		return;
+	}
+}
